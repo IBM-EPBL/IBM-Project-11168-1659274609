@@ -1,0 +1,21 @@
+import RPi.GPIO as GPIO  # importing the raspberry pi with the GPIO pins.	
+import time
+
+GPIO.setmode(GPIO.BCM)  # Connecting the 26 pins of the GPIO to be active
+GPIO.setwarnings(False)      # doesn’t show the warning msgs
+GPIO.setup(26,GPIO.IN)  # Object detection
+GPIO.setup(21,GPIO.OUT) #GPIO pin given here act as a key to on & off LED(red)
+GPIO.setup(20,GPIO.OUT) #GPIO pin given here act as a key to on & off LED(yellow)
+GPIO.setup(16,GPIO.OUT) #GPIO pin given here act as a key to on & off LED(green)
+While(1):
+	state = GPIO.input(26)
+	if state == True:
+		GPIO.output(21,GPIO.HIGH) # if the pin 21 is red light glows
+		time.sleep(120)  # light glows for 120sec
+		GPIO.output(20,GPIO.HIGH) # if the pin 20 is yellow light glows
+		time.sleep(120)  # light glows for 120 sec
+	else:
+		GPIO.output(16,GPIO.HIGH) # if 16 pin is green light glows
+		time.sleep(120)  # light doesn’t glows for 120 sec
+
+
